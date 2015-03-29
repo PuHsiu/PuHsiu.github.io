@@ -122,6 +122,61 @@
 				</section>
 
 				<section>
+					<section>
+						<h2>安裝與設置 (簡易版)</h2>
+						<p>
+							<a href="http://docs.openstack.org/juno/install-guide/install/apt/content/">官方安裝指南</a>
+						</p>
+					</section>
+					<section>
+						<h2>Database 的建立</h2>
+						<ol>
+							<li>帳號權限</li>
+						</ol>
+					</section>
+					<section>
+						<h2>安裝套件</h2>
+					</section>
+					<section>
+						<h2>修改設定檔</h2>
+						<ol>
+							<li>指定 Databases</li>
+							<li>指定 RabbitMQ</li>
+							<li>Keystone Auth 資訊</li>
+						</ol>
+					</section>
+					<section>
+						<h2>註冊服務</h2>
+					</section>
+					<section>
+						<h2>就降~超簡單~~~</h2>
+						<img data-src="http://i1.w.hjfile.cn/down/201102/dl20110223319444948238.jpg">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>原本應該是這樣子的....</h2>
+						<img data-src="http://25.media.tumblr.com/tumblr_lqwbb3BDQz1r2u6t2o1_500.jpg">
+					</section>
+					<section>
+						<h2>兩個 Router 會打架</h2>
+						<img data-src="http://sao.005.tv/Files/sao/2013051/20130614161948969.jpg">
+					</section>
+					<section>
+						<h2>L3-agent 假裝自己有在做事...</h2>
+						<img data-src="http://2.bp.blogspot.com/-ZkeppiDuKgA/T9WZrXPSngI/AAAAAAAAAIs/s3GrMD_jxtw/s1600/troll-sad-troll-face.png">
+					</section>
+					<section>
+						<h2>Provider Network</h2>
+							<h2>不能直接拿來用</h2>
+					</section>
+					<section>
+						<h2>Service 自爆...</h2>
+						<!--nova-scheduler-->
+					</section>
+				</section>
+
+				<section>
 					<section data-markdown>
 						## 目前佈署狀況
 					</section>
@@ -156,7 +211,7 @@
 +----+              Storage               |                         
      +------------------------------------+                         
 </pre>
-<script>
+<script id="network_overview_desc">
 	var network_overview = document.querySelector('#network_overview');
 	network_overview.innerHTML = network_overview.innerHTML.replace(/\((MGMT|NEUTRON|STORAGE) NETWORK\)/g, function(e){
 		return '<span style="color: gray">'+e+'</span>'
@@ -168,8 +223,12 @@
 					<section>
 						<h2>Controller Node</h2>
 					</section>
+					<section data-markdown>
+						| interface | network |     ip      |
+						|-----------|---------|-------------|
+						|    em0    |   mgmt  | 10.71.211.1 |
+					</section>
 					<section>
-						<h2>Services</h2>
 						<ol>
 							<li>MySQL</li>
 							<li>RabbitMQ Server</li>
@@ -182,28 +241,13 @@
 							<li>*-api</li>
 						</ol>
 					</section>
-					<section data-markdown>
-						## Network
-
-						| interface | network |     ip      |
-						|-----------|---------|-------------|
-						|    em0    |   mgmt  | 10.71.211.1 |
-						
-					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Compute Node</h2>
 					</section>
-					<section>
-						<h2>Services</h2>
-						<ol>
-							<li>Nova</li>
-						</ol>
-					</section>
 					<section data-markdown>
-						## Network (A)
-
+						#### ComputeA
 						| interface | network |     ip      |
 						|-----------|---------|-------------|
 						|   eth0    |   mgmt  | 10.71.231.1 |
@@ -211,8 +255,7 @@
 						|   eth2    | storage |      x      |
 					</section>
 					<section data-markdown>
-						## Network (4)
-
+						#### Compute4
 						| interface | network |     ip      |
 						|-----------|---------|-------------|
 						|    em1    |   mgmt  | 10.71.231.4 |
@@ -220,51 +263,127 @@
 						|    em2    | storage |      x      |
 
 					</section>
+					<section>
+						<ol>
+							<li>Nova</li>
+						</ol>
+					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Network Node</h2>
 					</section>
-					<section>
-						<h2>Services</h2>
-						<ol>
-							<li>Neutron</li>
-						</ol>
-					</section>
 					<section data-markdown>
-						## Network
-
-						|   interface  | network |     ip      |
-						|--------------|---------|-------------|
-						|     eth0     |   mgmt  | 10.71.221.1 |
-						|     eth1     | external| * (10.74.5.0/24) |
-						| InstanceGate | neutron | 172.16.231.1 |
-						|     eth2     |    br   |      *      |
-						|     eth3     |    br   |      *      |
-
+						|   interface  | network  |        ip        |
+						|--------------|----------|------------------|
+						|     eth0     |   mgmt   |   10.71.221.1    |
+						|     eth1     | external | * (10.74.5.0/24) |
+						| InstanceGate | neutron  |   172.16.231.1   |
+						|     eth2     |    br    |        *         |
+						|     eth3     |    br    |        *         |
+					</section>
+					<section>
+						<ul>
+							<li>Neutron</li>
+							<li>10.74.5.1~10.74.5.100 for Floating IP</li>
+						</ul>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>Storage Node</h2>
 					</section>
-					<section>
-						<h2>Services</h2>
-						<ol>
-							<li>Cinder</li>
-						</ol>
-					</section>
 					<section data-markdown>
-						## Network
-
 						|   interface  | network |     ip      |
 						|--------------|---------|-------------|
 						|      em1     |   mgmt  | 10.71.241.1 |
 						| InstanceGate | storage |      x      |
 						|     p1p1     |    br   |      *      |
 						|     p2p2     |    br   |      *      |
-
 					</section>
+					<section>
+						<ul>
+							<li>Cinder</li>
+							<li>1TB for Instance</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>實際操作一次</h2>
+						<img data-src="http://fq866.myweb.hinet.net/msn/sophy0515/sophy0515%20(13).jpg">
+					</section>
+					<section>
+						<h2>產生一個專用的 key</h2>
+						<p style="color: gray">
+							產生了也用不到 跳過 XD
+						</p>
+					</section>
+					<section data-markdown>
+						## 產生一個實例
+```bash
+boot \
+--flavor FLAVOR_NAME \
+--image IMAGE_NAME \
+--nic net-id=NET_ID \
+--security-group default \
+--key-name KEY_NAME \
+INSTANCE_NAME
+```
+					</section>
+					<section data-markdown>
+						## 綁定 Floating IP
+```
+neutron floatingip-create EXTERNAL_NETWORK_ID
+nova floating-ip-associate INSTANCE_NAME NEW_GENERATE_IP
+```
+					</section>
+					<section data-markdown>
+						## 外掛虛擬硬碟
+```
+cinder create --display-name VOLUME_NAME SIZE(GB)
+nova volume-list
+nova volume-attach INSTANCE_NAME VOLUME_ID
+```
+					</section>
+					<section data-markdown>
+						## 最後檢驗一下
+```
+nova list
+nova volume-list
+```
+					</section>
+					<section data-markdown>
+						## 大功告成！
+```
+nova get-vnc-console INSTANCE_NAME novnc
+```
+						
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>最後分享幾個小技巧</h2>
+					</section>
+					<section>
+						<ul>
+							<li>ip netns</li>
+							<li>ip netns exec <span style='color:gray'>VIRTUAL_DEVICE</span> bash</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>nova list</li>
+							<li>nova --help</li>
+							<li>neutron --help</li>
+							<hr>
+							<li>sudo nova-manage service list 2&gt/dev/null</li>
+							<li>sudo neutron agent-list</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h1>謝謝大家 :)</h1>
 				</section>
 			</div>
 		</div>
