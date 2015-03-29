@@ -40,12 +40,236 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-markdown>
-					# 4ipstack
+				<section>
+					<h1>4ipstack</h1>
+					<h3>Openstack @ our company</h3>
+				</section>
+				<section>
+					<h2>What is Openstack ?</h2>
+				</section>
+				<section>
+					<h2>統合分散的硬體資源</h2>
+					<h2>+</h2>
+					<h2>有效的分配</h2>
+					<h2 style="text-align: right">的平台</h2>
+				</section>
+				<section>
+
+					<section>
+						<ol>
+							<li>網路</li>
+							<li>CPU</li>
+							<li>記憶體</li>
+							<li>儲存空間</li>
+						</ol>
+					</section>
+
+					<section>
+						<h2>網路資源管理</h2>
+						<ul>
+							<li>Neutron Network</li>
+							<li id='nova-network'>Nova Network</li>
+						</ul>
+						<script id='nova-network-event'>
+							var nova_network = document.querySelector('#nova-network'),
+								nova_network_event = document.querySelector('#nova-network-event');
+							var del_nova_network = function(){
+								this.innerHTML = '<del>'+this.innerHTML+'</del>';
+								this.style.color = 'gray';
+								nova_network.removeEventListener('click', del_nova_network);
+								delete(nova_network);
+								delete(nova_network_event)
+								nova_network_event.parentNode.removeChild(nova_network_event)
+							};
+							nova_network.addEventListener('click', del_nova_network);
+						</script>
+					</section>
+
+					<section>
+						<h2>運算資源管理</h2>
+						<ul>
+							<li>Nova</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>儲存資源管理</h2>
+						<ul>
+							<li>Cinder</li>
+							<li style="color: gray">Swift</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Openstack 核心服務</h2>
+						<ul>
+							<li>Keystone</li>
+							<li>Glance</li>
+							<hr>
+							<li>MySQL</li>
+							<li>RabbitMQ</li>
+							<li>NTP</li>
+						</ul>
+					</section>
+					<section>
+						<h2>其它服務</h2>
+						<ul>
+							<li>Horizon</li>
+							<li>Ceilometer</li>
+							<li>Heat</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						## 目前佈署狀況
+					</section>
+					<section data-markdown>
+						## 5 Nodes
+						|             | CPU | Memory | Storage |
+						|-------------|-----|--------|---------|
+						| Controller  |  4  |	8G   |   1T    |
+						| Network     |  8  |	4G   |  150G   |
+						| ComputeA    |  8  |  16G   |  150G   |
+						| Compute4    |  4  |  16G   |   1T    |
+						| Storage     |  4  |   4G   | 1T + 1T |
+					</section>
+					<section>
+<pre id="network_overview">
+     +-----------------------------------+                  +------+
++----+        Switch (10.71.0.0/16)      |        x---------+ DEV* |
+| +--+           (MGMT NETWORK)          +---+              +------+
+| |  +-----+----------------------+------+   |                      
+| |        |                      |          |                      
+| |  +-----+------+        +------+-------+  |    +----------------+
+| |  | Controller |        |   Network    +-------+      WAN       |
+| |  +------------+        +----+----+----+  |    | (10.74.5.0/24) |
+| |                             |    |       |    +----------------+
+| |         +-------------------+    |       |                      
+| |         |    (NEUTRON NETWORK)   |       |                      
+| |  +------+------+       +---------+----+  |                      
+| +--+   ComputeA  |       |   Compute4   +--+                      
+|    +------+------+       +-------+------+                         
+|           |   (STORAGE NETWORK)  |                                
+|    +------+----------------------+------+                         
++----+              Storage               |                         
+     +------------------------------------+                         
+</pre>
+<script>
+	var network_overview = document.querySelector('#network_overview');
+	network_overview.innerHTML = network_overview.innerHTML.replace(/\((MGMT|NEUTRON|STORAGE) NETWORK\)/g, function(e){
+		return '<span style="color: gray">'+e+'</span>'
+	});
+</script>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Controller Node</h2>
+					</section>
+					<section>
+						<h2>Services</h2>
+						<ol>
+							<li>MySQL</li>
+							<li>RabbitMQ Server</li>
+							<hr>
+							<li>KeyStone</li>
+							<li>Glance</li>
+							<li>Horizon</li>
+							<hr>
+							<li>*-scheduler</li>
+							<li>*-api</li>
+						</ol>
+					</section>
+					<section data-markdown>
+						## Network
+
+						| interface | network |     ip      |
+						|-----------|---------|-------------|
+						|    em0    |   mgmt  | 10.71.211.1 |
+						
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Compute Node</h2>
+					</section>
+					<section>
+						<h2>Services</h2>
+						<ol>
+							<li>Nova</li>
+						</ol>
+					</section>
+					<section data-markdown>
+						## Network (A)
+
+						| interface | network |     ip      |
+						|-----------|---------|-------------|
+						|   eth0    |   mgmt  | 10.71.231.1 |
+						|   eth3    | neutron | 172.16.231.1 |
+						|   eth2    | storage |      x      |
+					</section>
+					<section data-markdown>
+						## Network (4)
+
+						| interface | network |     ip      |
+						|-----------|---------|-------------|
+						|    em1    |   mgmt  | 10.71.231.4 |
+						|   eth1    | neutron | 172.16.231.4 |
+						|    em2    | storage |      x      |
+
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Network Node</h2>
+					</section>
+					<section>
+						<h2>Services</h2>
+						<ol>
+							<li>Neutron</li>
+						</ol>
+					</section>
+					<section data-markdown>
+						## Network
+
+						|   interface  | network |     ip      |
+						|--------------|---------|-------------|
+						|     eth0     |   mgmt  | 10.71.221.1 |
+						|     eth1     | external| * (10.74.5.0/24) |
+						| InstanceGate | neutron | 172.16.231.1 |
+						|     eth2     |    br   |      *      |
+						|     eth3     |    br   |      *      |
+
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Storage Node</h2>
+					</section>
+					<section>
+						<h2>Services</h2>
+						<ol>
+							<li>Cinder</li>
+						</ol>
+					</section>
+					<section data-markdown>
+						## Network
+
+						|   interface  | network |     ip      |
+						|--------------|---------|-------------|
+						|      em1     |   mgmt  | 10.71.241.1 |
+						| InstanceGate | storage |      x      |
+						|     p1p1     |    br   |      *      |
+						|     p2p2     |    br   |      *      |
+
+					</section>
 				</section>
 			</div>
-
 		</div>
+
+		<!--li class="fragment">將部份服務托管是有可能達成的</li><!--例如 Storage Node 是一個外部的節點-->
 
 		<script src="reveal.js/lib/js/head.min.js"></script>
 		<script src="reveal.js/js/reveal.js"></script>
