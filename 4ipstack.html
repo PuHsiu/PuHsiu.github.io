@@ -228,6 +228,25 @@ cirros
 							<span style="color: yellow">No valid host was found.</span> 通常發生在系統資源不足的時候
 						</p>
 					</section>
+
+					<section>
+						<h2><span style="color:red">cannot</span> ping <span style="color:yellow">via floating ip</span>, </h2>
+						<p>
+							Security Group !!
+						</p>
+					</section>
+
+					<section>
+						<h2><span style="color:red">still cannot</span> ssh <span style="color:yellow">via floating ip</span></h2>
+						<p>
+							MTU <-> GRE Tunnel
+						</p>
+						<pre><code>ifconfig INSTANCE_INTERFACE mtu 1400</code></pre>
+						or
+						<p>
+							TCP MSS (DebugKernel.shtml)
+						</p>
+					</section>
 				</section>
 
 				<section>
