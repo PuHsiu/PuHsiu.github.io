@@ -38,22 +38,22 @@
 
 		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
 					<h1>4ipstack</h1>
 					<h3>Openstack @ our company</h3>
 				</section>
 				<section>
-					<h2>What is Openstack ?</h2>
-				</section>
-				<section>
-					<h2>統合分散的硬體資源</h2>
-					<h2>+</h2>
-					<h2>有效的分配</h2>
-					<h2 style="text-align: right">的平台</h2>
-				</section>
-				<section>
+					<section>
+						<h2>What is Openstack ?</h2>
+					</section>
+
+					<section>
+						<h2>整合分散的硬體資源</h2>
+						<h2>+</h2>
+						<h2>有效的分配</h2>
+						<h2 style="text-align: right">的平台</h2>
+					</section>
 
 					<section>
 						<ol>
@@ -62,6 +62,7 @@
 							<li>記憶體</li>
 							<li>儲存空間</li>
 						</ol>
+						<img data-src="4ipstack/resource_use.png">
 					</section>
 
 					<section>
@@ -129,13 +130,24 @@
 						</p>
 					</section>
 					<section>
-						<h2>Database 的建立</h2>
-						<ol>
-							<li>帳號權限</li>
-						</ol>
+						<h2>Databases</h2>
+<pre><code>-- Create a database
+CREATE DATABASE nova;
+
+-- Assign a full permission for user "nova" under database "nova"
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY 'NOVA_PASS';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'NOVA_PASS';
+</code></pre>
 					</section>
 					<section>
 						<h2>安裝套件</h2>
+						<pre><code>apt-get install nova-api\
+                nova-cert\
+                nova-conductor\
+                nova-consoleauth\
+                nova-novncproxy\
+                nova-scheduler\
+                python-novaclient</code></pre>
 					</section>
 					<section>
 						<h2>修改設定檔</h2>
@@ -144,9 +156,23 @@
 							<li>指定 RabbitMQ</li>
 							<li>Keystone Auth 資訊</li>
 						</ol>
+						<img data-src="4ipstack/keystone_conf.png">
+						<img data-src="4ipstack/rabbit_conf.png">
 					</section>
 					<section>
 						<h2>註冊服務</h2>
+<pre><code>$ keystone user-create --name nova --pass NOVA_PASS
+$ keystone user-role-add --user nova --tenant service --role admin
+$ keystone service-create --name nova --type compute --description "OpenStack Compute"
+
+$ keystone endpoint-create \
+  --service-id $(keystone service-list | awk '/ compute / {print $2}') \
+  --publicurl http://controller:8774/v2/%\(tenant_id\)s \
+  --internalurl http://controller:8774/v2/%\(tenant_id\)s \
+  --adminurl http://controller:8774/v2/%\(tenant_id\)s \
+  --region regionOne
+</code></pre>
+						<img data-src="4ipstack/regist_service_list.png">
 					</section>
 					<section>
 						<h2>就降~超簡單~~~</h2>
@@ -163,16 +189,44 @@
 						<img data-src="http://sao.005.tv/Files/sao/2013051/20130614161948969.jpg">
 					</section>
 					<section>
+						<h2>兩個 Subnet，一個 External</h2>
+						<img data-src="4ipstack/both_network_topology.png">
+					</section>
+					<section>
+						<h2>理想上</h2>
+						<img data-src="4ipstack/both_network_topology_ideal_route.png">
+					</section>
+					<section>
+						<h2>實際上</h2>
+						<img data-src="4ipstack/both_network_topology_when_route.png">
+					</section>
+					<section>
 						<h2>L3-agent 假裝自己有在做事...</h2>
 						<img data-src="http://2.bp.blogspot.com/-ZkeppiDuKgA/T9WZrXPSngI/AAAAAAAAAIs/s3GrMD_jxtw/s1600/troll-sad-troll-face.png">
 					</section>
 					<section>
-						<h2>Provider Network</h2>
-							<h2>不能直接拿來用</h2>
+						<img data-src="4ipstack/l3_agent_say_its alive.png">
 					</section>
 					<section>
-						<h2>Service 自爆...</h2>
-						<!--nova-scheduler-->
+						<img data-src="4ipstack/l3agent_is_die.png">
+					</section>
+					<section>
+						<h2>Provider Network</h2>
+						<h2>不能直接拿來用</h2>
+<pre><code>neutron net-list | grep ext</code></pre>
+						<img data-src="4ipstack/net_list.png">
+<pre><code>nova boot --flavor m1.tiny --image cirros-0.3.3-x86_64 \
+--nic net-id=ba42bb7b-048b-4516-9148-1ddb28614975 \
+cirros
+</code></pre>
+						<img data-src="4ipstack/use_external_will_fail_no_valid_host_was_found.png">
+						<p style="text-align: right">可是他還是拿得到 IP...</p>
+					</section>
+					<section>
+						<h2>附帶一提</h2>
+						<p>
+							<span style="color: yellow">No valid host was found.</span> 通常發生在系統資源不足的時候
+						</p>
 					</section>
 				</section>
 
@@ -314,51 +368,63 @@
 						<img data-src="http://fq866.myweb.hinet.net/msn/sophy0515/sophy0515%20(13).jpg">
 					</section>
 					<section>
-						<h2>產生一個專用的 key</h2>
-						<p style="color: gray">
-							產生了也用不到 跳過 XD
-						</p>
+						<h2>產生一個實例</h2>
+<pre><code>nova boot \
+--flavor FLAVOR_ID \
+--image IMAGE_ID \
+--nic net-id=SUBNET_ID \
+--security-group SECGROUP_ID \
+INSTANCE_NAME
+</code></pre>
+					<img data-src="4ipstack/instance_boot.png">
 					</section>
-					<section data-markdown>
-						## 產生一個實例
-```bash
-boot \
+					<section>
+						<h2>資源列表</h2>
+						<pre><code>nova flavor-list</code></pre>
+						<img data-src="4ipstack/get_flavor.png">
+
+						<pre><code>nova secgroup-list</code></pre>
+						<img data-src="4ipstack/get_secgroup.png">
+
+						<pre><code>glance image-list</code></pre>
+						<img data-src="4ipstack/get_image.png">
+						
+						<pre><code>neutron net-list</code></pre>
+						<img data-src="4ipstack/get_subnet.png">
+
+					</section>
+					<section>
+						<h2>或者是...</h2>
+<pre><code>nova boot \
 --flavor FLAVOR_NAME \
 --image IMAGE_NAME \
---nic net-id=NET_ID \
---security-group default \
---key-name KEY_NAME \
+--nic net-id=INT_NET_ID \
+--security-group SECGROUP_NAME \
 INSTANCE_NAME
-```
+</code></pre>
 					</section>
-					<section data-markdown>
-						## 綁定 Floating IP
-```
-neutron floatingip-create EXTERNAL_NETWORK_ID
-nova floating-ip-associate INSTANCE_NAME NEW_GENERATE_IP
-```
+					<section>
+						<h2>綁定 Floating IP</h2>
+						<pre><code>neutron floatingip-create EXT_NET_ID</code></pre>
+						<img data-src="4ipstack/create_float_ip.png">
+						<pre><code>nova floating-ip-associate INSTANCE_ID FLOATING_IP</code></pre>
+						<img data-src="4ipstack/assign_floating_ip.png">
 					</section>
-					<section data-markdown>
-						## 外掛虛擬硬碟
-```
-cinder create --display-name VOLUME_NAME SIZE(GB)
+					<section>
+						<h2>外掛虛擬硬碟</h2>
+						<pre><code>cinder create --display-name VOLUME_NAME 1</code></pre>
+						<pre><code>nova volume-attach INSTANCE_ID VOLUME_ID</code></pre>
+						<img data-src="4ipstack/new_volume.png">
+					</section>
+					<section>
+						<h2>最後檢驗一下</h2>
+<pre><code>nova list
 nova volume-list
-nova volume-attach INSTANCE_NAME VOLUME_ID
-```
+</code></pre>
 					</section>
-					<section data-markdown>
-						## 最後檢驗一下
-```
-nova list
-nova volume-list
-```
-					</section>
-					<section data-markdown>
-						## 大功告成！
-```
-nova get-vnc-console INSTANCE_NAME novnc
-```
-						
+					<section>
+						<h2>大功告成！</h2>
+						<pre><code>nova get-vnc-console INSTANCE_ID novnc</code></pre>						
 					</section>
 				</section>
 				<section>
@@ -370,16 +436,20 @@ nova get-vnc-console INSTANCE_NAME novnc
 							<li>ip netns</li>
 							<li>ip netns exec <span style='color:gray'>VIRTUAL_DEVICE</span> bash</li>
 						</ul>
+						<img data-src="4ipstack/ip_netns.png">
 					</section>
 					<section>
 						<ul>
-							<li>nova list</li>
 							<li>nova --help</li>
 							<li>neutron --help</li>
-							<hr>
-							<li>sudo nova-manage service list 2&gt/dev/null</li>
-							<li>sudo neutron agent-list</li>
 						</ul>
+					</section>
+					<section>
+						<p>sudo nova-manage service list 2&gt/dev/null</p>
+						<img data-src="4ipstack/service_list.png">
+
+						<p>sudo neutron agent-list</p>
+						<img data-src="4ipstack/agent_list.png">
 					</section>
 				</section>
 				<section>
