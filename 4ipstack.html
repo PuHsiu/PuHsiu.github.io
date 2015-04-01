@@ -121,7 +121,17 @@
 						</ul>
 					</section>
 				</section>
-
+				<!--section>
+					<section>
+						<h2>Keystone</h2>
+						<ol>
+							<li>User</li>
+							<li>Tenant</li>
+							<li>Service</li>
+							<li>Endpoint</li>
+						</ol>
+					</section>
+				</section-->
 				<section>
 					<section>
 						<h2>安裝與設置 (簡易版)</h2>
@@ -185,6 +195,9 @@ $ keystone endpoint-create \
 						<img data-src="http://25.media.tumblr.com/tumblr_lqwbb3BDQz1r2u6t2o1_500.jpg">
 					</section>
 					<section>
+						<h2>第一個故事...</h2>
+					</section>
+					<section>
 						<h2>兩個 Router 會打架</h2>
 						<img data-src="http://sao.005.tv/Files/sao/2013051/20130614161948969.jpg">
 					</section>
@@ -201,14 +214,31 @@ $ keystone endpoint-create \
 						<img data-src="4ipstack/both_network_topology_when_route.png">
 					</section>
 					<section>
+						<p>封包在 FORWARD 和 POSTROUTING 之間<span style="color:yellow; font-weight: bold;">蒸發了</span></p>
+					</section>	
+					<section>
+						<h2>第二個故事...</h2>
+					</section>
+					<section>
 						<h2>L3-agent 假裝自己有在做事...</h2>
 						<img data-src="http://2.bp.blogspot.com/-ZkeppiDuKgA/T9WZrXPSngI/AAAAAAAAAIs/s3GrMD_jxtw/s1600/troll-sad-troll-face.png">
 					</section>
 					<section>
+						<h2>Daemon 有跑起來...</h2>
 						<img data-src="4ipstack/l3_agent_say_its alive.png">
 					</section>
 					<section>
+						<h2>Controller Node 找不到 l3-agent</h2>
 						<img data-src="4ipstack/l3agent_is_die.png">
+					</section>
+					<section>
+						<h2>元兇是...</h2>
+						<pre><code>
+debug = INFO
+						</code></pre>
+					</section>
+					<section>
+						<h2>第三個故事...</h2>
 					</section>
 					<section>
 						<h2>Provider Network</h2>
@@ -230,12 +260,18 @@ cirros
 					</section>
 
 					<section>
+						<h2>第四個故事...</h2>
+					</section>
+					<section>
 						<h2><span style="color:red">cannot</span> ping <span style="color:yellow">via floating ip</span>, </h2>
 						<p>
 							Security Group !!
 						</p>
 					</section>
 
+					<section>
+						<h2>第五個故事...</h2>
+					</section>
 					<section>
 						<h2><span style="color:red">still cannot</span> ssh <span style="color:yellow">via floating ip</span></h2>
 						<p>
@@ -327,14 +363,35 @@ cirros
 						|   eth3    | neutron | 172.16.231.1 |
 						|   eth2    | storage |      x      |
 					</section>
-					<section data-markdown>
-						#### Compute4
-						| interface | network |     ip      |
-						|-----------|---------|-------------|
-						|    em1    |   mgmt  | 10.71.231.4 |
-						|   eth1    | neutron | 172.16.231.4 |
-						|    em2    | storage |      x      |
-
+					<section>
+						<h4> Copute4 </h2>
+						<table>
+							<thead>
+								<tr>
+									<th>interface</th>
+									<th>network</th>
+									<th>ip</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>em1</td>
+									<td>mgmt</td>
+									<td>10.71.231.4</td>
+								</tr>
+								<tr>
+									<td>eth1</td>
+									<td>neutron</td>
+									<td>172.16.231.4</td>
+								</tr>
+								<tr>
+									<td>em2</td>
+									<td>storage</td>
+									<td>x</td>
+								</tr>
+							</tbody>
+						</table>	
+						<p style="color:gray; text-align: right;">陣亡中</p>
 					</section>
 					<section>
 						<ol>
