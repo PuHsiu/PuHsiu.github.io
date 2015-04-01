@@ -230,22 +230,25 @@ cirros
 					</section>
 
 					<section>
-						<h2><span style="color:red">cannot</span> ping <span style="color:yellow">via floating ip</span>, </h2>
+						<h2><span style="color:red">cannot</span> ping <span style="color:yellow">via floating ip</span></h2>
 						<p>
 							Security Group !!
 						</p>
 					</section>
 
 					<section>
-						<h2><span style="color:red">still cannot</span> ssh <span style="color:yellow">via floating ip</span></h2>
-						<p>
-							MTU <-> GRE Tunnel
-						</p>
-						<pre><code>ifconfig INSTANCE_INTERFACE mtu 1400</code></pre>
-						or
-						<p>
-							TCP MSS (DebugKernel.shtml)
-						</p>
+						<h2><span style="color:red">cannot</span> ssh <span style="color:yellow">via floating ip</span></h2>
+					</section>
+					<section>
+						<h2>GRE Tunnel v.s MTU</h2>
+						<img data-src="4ipstack/GRE_Tunnel_break.png">
+						<p>Ref: <a href="http://teenyscrew.blogspot.tw/2014/06/gre-tunnel-mtu.html">使用 GRE Tunnel 時，可能會遇到的 MTU 問題</a></p>
+					</section>
+					<section>
+						<pre><code>ifconfig INSTANCE_INTERFACE mtu 1436</code></pre>
+						<p>or</p>
+						<p>TCP MSS</p>
+						<img data-src="4ipstack/debug_kernel.png">
 					</section>
 				</section>
 
@@ -329,12 +332,12 @@ cirros
 					</section>
 					<section data-markdown>
 						#### Compute4
+
 						| interface | network |     ip      |
 						|-----------|---------|-------------|
 						|    em1    |   mgmt  | 10.71.231.4 |
 						|   eth1    | neutron | 172.16.231.4 |
 						|    em2    | storage |      x      |
-
 					</section>
 					<section>
 						<ol>
@@ -445,6 +448,11 @@ nova volume-list
 						<h2>大功告成！</h2>
 						<pre><code>nova get-vnc-console INSTANCE_ID novnc</code></pre>						
 					</section>
+				</section>
+				<section>
+					<h2>登入帳密</h2>
+					<div>SSH: <div style="display: inline-block; min-width: 200px; color: yellow;" contenteditable>ACCT/PWD</div></div>
+					<div>WebUI: <div style="display: inline-block; min-width: 200px; color: yellow;" contenteditable>ACCT/PWD</div></div>
 				</section>
 				<section>
 					<section>
