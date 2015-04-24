@@ -32,6 +32,16 @@
 		<!--[if lt IE 9]>
 		<script src="reveal.js/lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+		<style>
+			.author {
+				color: gray;
+			}
+
+			.author:before {
+				content: ' - '
+			}
+		</style>
 	</head>
 
 	<body>
@@ -40,17 +50,47 @@
 
 			<div class="slides">
 				<section>
-					<h1>Introduction to OpenStack</h1>
+					<h1>Introduction to <a href="http://www.openstack.org/"><img style="width:200px;height:200px" data-src="introduction_to_openstack/openstack_icon.png"></a></h1>
 				</section>
 				<section>
 					<section>
 						<h2>講個故事</h2><!--Why Cloud, Why OpenStack-->
+						<!--Openstack 版本衍進-->
+					</section>
+				</section>
+				<section>
+					<!--Brief describe related production in the world，Openstack 可以做很多事-->
+					<section>
+						<p>
+							我們正在用OpenStack搭建的雲，讓擁有敏捷性、可用性和創新性的最好的產品，服務於我們用戶，同時我們比競爭對手更快。
+							<span class="author">Paypal 基礎設施高階主管 Saran Mandair</span>
+						</p>
+					</section>
+					<section>
+						<p>
+							我們很榮幸能與紅帽擴展既有的合作關係，進一步提供OpenStack網路功能虛擬化的合作。
+							<span class="author">華為雲端運算產品線總裁任志鵬</span>
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<ul>
+							<li>Cisco WebEx</li>
+							<li>Yahoo</li>
+							<li>Rackspace</li>
+							<li>Sony Network Entertainment</li>
+							<li>京東</li>
+							<li>小米</li>
+							<li>Unitedstack</li>
+							<li>inwinStack</li><!--http://www.inwinstack.com/Default.aspx-->
+							<li><a href="http://www.openstack.org/user-stories">...</a></li>
+						</ul>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>簡介</h2><!--Introduction to OpenStack, include what it is, its member (nova, neutron, ...)-->
-						<!--Openstack 版本衍進-->
 					</section>
 					<section>
 						<h2>運算能力</h2>
@@ -58,35 +98,8 @@
 						<h2>儲存空間</h2>
 					</section>
 					<section>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>現有應用</h2><!--Brief describe related production in the world，Openstack 可以做很多事-->
-					</section>
-					<section>
-						<h2>HP Cloud</h2>
-					</section>
-					<section>
-						<ul>
-							<li>Mirantis</li>
-							<li>Canonical</li>
-							<li>Rackspace</li>
-							<li>CERN</li>
-							<li>ksyun.com</li>
-							<li>青雲</li>
-							<li>Unitedstack</li>
-							<li>BesyBuy</li>
-							<li>eBay</li>
-							<li>Paypal</li><!--www.openstack.org/user-stories/paypal/-->
-							<li>PistonCloud</li>
-							<li>唯品會</li>
-							<li>攜程</li>
-							<li>Sina SAE</li>
-							<li>小米</li>
-							<li>Macrosam</li><!--http://www.macrosan.com/solutionInfo.aspx?id=217&&style=3001&&type=124-->
-							<li>inwinStack</li><!--http://www.inwinstack.com/Default.aspx-->
-						</ul>
+						<h2>容易佈署</h2>
+						<h2>擴張容易</h2>
 					</section>
 				</section>
 				<section>
@@ -116,16 +129,19 @@
 					<h2>devstack</h2><!--Enjoy it-->
 				</section>
 				<section>
-					<h2>Q &amp A</h2>
+					<img data-src="http://media.comicbook.com/wp-content/uploads/2013/12/brian-griffin-family-guy.jpg">
 				</section>
 				<section>
 					<h2>Thanks</h2>
 				</section>
 
+
 				<!--重點是超多大咖都伙在開發團隊裡啊啊啊啊啊-->
 				<!--VMware已经贡献出VCDrivers 去帮助OpenStack去管理vSphere集群-->
 				<!--方便佈署，易於伸縮-->
 				<!--Puppet-->
+				<!--Iaas, PaaS, ...? -->
+				<!--Why Openstack in our company-->
 			</div>
 		</div>
 
