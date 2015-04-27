@@ -72,13 +72,17 @@
 						<p> OK~ </p>
 					</section>
 					<section>
-						<p>啊，另外還要弄幾個測試的環境，環境之間不要彼此汙染哦！</p>
+						<p>啊，另外還要弄幾個測試的環境</p>
+						<p>環境之間不要彼此汙染哦！</p>
 					</section>
 					<section>
 						<p>用 Virtualization 或 Container 弄好像也還好!? </p>
 					</section>
 					<section>
-						<p>啊，以後可能還會看情況增減硬體，環境什麼的最好可以很簡單的擴充，負載平衡什麼的也考慮一下</p>
+						<p>啊，以後可能還會看情況增減硬體</p>
+						<p>環境什麼的最好可以很簡單的擴充</p>
+						<p>負載平衡什麼的也考慮一下</p>
+						<p>另外找個方法讓管理更方便一點</p>
 					</section>
 					<section>
 						<p>於是小王就...</p>
@@ -120,25 +124,76 @@
 				<!--http://www.inwinstack.com/Default.aspx-->
 
 				<section>
-					<section>
-						<h2>簡介</h2><!--Introduction to OpenStack, include what it is, its member (nova, neutron, ...)-->
-					</section>
+					<!--Introduction to OpenStack, include what it is, its member (nova, neutron, ...)-->
 					<section>
 						<h2>What is Openstack ?</h2>
+					</section>
+					<section>
 						<p>整合分散的硬體資源</p>
 						<p>+</p>
 						<p>有效的分配</p>
 						<p style="text-align:right">的平台</p>
 					</section>
 					<section>
-						<h2>運算能力</h2>
-						<h2>網路通訊</h2>
-						<h2>儲存空間</h2>
+						<h2>或者也可以稱之為 "技術間協調者"</h2>
 					</section>
 					<section>
-						<h2>容易佈署</h2>
-						<h2>擴張容易</h2>
+						<img data-src="introduction_to_openstack/openstack_is_a_platform.png">
 					</section>
+					<section>
+						<h2>硬體資源</h2>
+						<ul>
+							<li>CPU</li>
+							<li>Memory</li>
+							<li>Storage</li>
+							<li>Network</li>
+						</ul>
+					</section>
+					<section>
+						<h2>資源分配</h2>
+						<ul>
+							<li>CPU ： Nova</li>
+							<li>Memory ： Nova</li>
+							<li>Storage ： Cinder or Swift</li>
+							<li>Network ： Neutron</li>
+						</ul>
+					</section>
+					<section>
+						<h2>擴展容易</h2>
+						<ul>
+							<li>接電接網路</li>
+							<li>裝 Package </li>
+							<li>抄設定檔</li>
+							<li>...............就這樣 XD</li>
+						</ul>
+					</section>
+					<section>
+						<h2>移除設備也很簡單</h2>
+						<ul>
+							<li>該備份記得備份一下的</li>
+							<li>該搬的 VM 搬一搬 (Migrate 無負擔)</li>
+							<li>拔電拔網路</li>
+							<li>...............End XD</li>
+						</ul>
+					</section>
+					<section>
+						<h2>VM 佈署容易</h2>
+						<ul>
+							<li>模版功能：Heat</li>
+							<li>自動化管理：Puppet</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Admin Friendly</h2>
+						<ul>
+							<li>資源狀態的監控：Celimeter</li>
+							<li>管理者介面：Horizon</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>更扯的是他的競爭對手居然也在 OpenStack 上下注</h2>
+					<a href="http://www.ithome.com.tw/news/90440">擁抱開源OpenStack和Docker，VMware跨出私有雲邁向混合雲策略</a>
 				</section>
 				<!--section>
 					<section>
@@ -187,11 +242,12 @@
 						<h2>Additional Storage</h2>
 					</section>
 					<section>
-						<h2>其實講認真的...Horizon 少了滿多功能的...</h2>
+						<h2>WebUI 功能還不夠完整...</h2>
 						<p>
+							建議參考
 							<a href="http://anystacker.com/2014/02/openstack-command-line-cheat-sheet/">Command Cheat Sheet</a>
-							or
-							<a href="http://docs.openstack.org/cli-reference/content/">Command-Line Interface Reference</a>
+							或者
+							<a href="http://docs.openstack.org/cli-reference/content/">官方的 CLI Reference</a>
 						</p>
 
 					</section>
@@ -221,7 +277,6 @@
 				<!--重點是超多大咖都伙在開發團隊裡啊啊啊啊啊-->
 				<!--VMware已经贡献出VCDrivers 去帮助OpenStack去管理vSphere集群-->
 				<!--方便佈署，易於伸縮-->
-				<!--Puppet-->
 				<!--Iaas, PaaS, ...? -->
 				<!--Why Openstack in our company-->
 			</div>
