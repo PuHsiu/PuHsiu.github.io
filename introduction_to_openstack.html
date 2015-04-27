@@ -55,7 +55,13 @@
 				</section>
 				<section>
 					<section>
-						<h2>有一天，小明找來了小王</h2>
+						<h2>有一天</h2>
+						<table>
+							<tr>
+								<td><img style="width:200px;height:200px" data-src="introduction_to_openstack/mark-b.jpg"></td>
+								<td><img style="width:200px;height:200px" data-src="introduction_to_openstack/mark-m.jpg"></td>
+							</tr>
+						</table>
 					</section>
 					<section>
 						<p>
@@ -67,26 +73,30 @@
 							五台…
 						</p>
 						<p>麻煩弄個開發環境出來</p>
+						<img style="width:200px;height:200px" data-src="introduction_to_openstack/mark-b.jpg">
 					</section>
 					<section>
-						<p> OK~ </p>
+						<p> 好哦~ </p>
+						<img style="width:200px;height:200px" data-src="introduction_to_openstack/mark-m.jpg">
 					</section>
 					<section>
 						<p>啊，另外還要弄幾個測試的環境</p>
 						<p>環境之間不要彼此汙染哦！</p>
+						<img style="width:200px;height:200px" data-src="introduction_to_openstack/mark-b.jpg">
 					</section>
 					<section>
-						<p>用 Virtualization 或 Container 弄好像也還好!? </p>
+						<p>用 Virtualization 或 Container 好像 OK!? </p>
+						<img style="width:200px;height:200px" data-src="introduction_to_openstack/mark-m.jpg">
 					</section>
 					<section>
 						<p>啊，以後可能還會看情況增減硬體</p>
 						<p>環境什麼的最好可以很簡單的擴充</p>
 						<p>負載平衡什麼的也考慮一下</p>
 						<p>另外找個方法讓管理更方便一點</p>
+						<img style="width:200px;height:200px" data-src="introduction_to_openstack/mark-b.jpg">
 					</section>
 					<section>
-						<p>於是小王就...</p>
-						<img data-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRtaF64Dr-YOdyXy-ZCvVj6aGOo3UJrtd0pB-N-ziblVl-aepBMIQ">
+						<img style="width: 200%;height: 200%;" data-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRtaF64Dr-YOdyXy-ZCvVj6aGOo3UJrtd0pB-N-ziblVl-aepBMIQ">
 					</section>
 				</section>
 				<!--Why Cloud, Why OpenStack-->
@@ -134,20 +144,11 @@
 						<p>有效的分配</p>
 						<p style="text-align:right">的平台</p>
 					</section>
-					<section>
+					<!--section>
 						<h2>或者也可以稱之為 "技術間協調者"</h2>
-					</section>
+					</section-->
 					<section>
 						<img data-src="introduction_to_openstack/openstack_is_a_platform.png">
-					</section>
-					<section>
-						<h2>硬體資源</h2>
-						<ul>
-							<li>CPU</li>
-							<li>Memory</li>
-							<li>Storage</li>
-							<li>Network</li>
-						</ul>
 					</section>
 					<section>
 						<h2>資源分配</h2>
@@ -170,14 +171,14 @@
 					<section>
 						<h2>移除設備也很簡單</h2>
 						<ul>
-							<li>該備份記得備份一下的</li>
-							<li>該搬的 VM 搬一搬 (Migrate 無負擔)</li>
+							<li>該備份備份一下</li>
+							<li>該搬的 VM 搬一搬</li>
 							<li>拔電拔網路</li>
-							<li>...............End XD</li>
+							<li>...............End</li>
 						</ul>
 					</section>
 					<section>
-						<h2>VM 佈署容易</h2>
+						<h2>VM 輕鬆佈署</h2>
 						<ul>
 							<li>模版功能：Heat</li>
 							<li>自動化管理：Puppet</li>
@@ -190,10 +191,10 @@
 							<li>管理者介面：Horizon</li>
 						</ul>
 					</section>
-				</section>
-				<section>
-					<h2>更扯的是他的競爭對手居然也在 OpenStack 上下注</h2>
-					<a href="http://www.ithome.com.tw/news/90440">擁抱開源OpenStack和Docker，VMware跨出私有雲邁向混合雲策略</a>
+					<!--section>
+						<h2>更扯的是他的競爭對手居然也在 OpenStack 上壓寶</h2>
+						<a href="http://www.ithome.com.tw/news/90440">擁抱開源OpenStack和Docker，VMware跨出私有雲邁向混合雲策略</a>
+					</section-->
 				</section>
 				<!--section>
 					<section>
@@ -248,6 +249,9 @@
 						<h2>Floating IP</h2>
 						<img data-src="introduction_to_openstack/livedemo-assign-floatingip.png">
 					</section>
+					<section>
+						<img data-src="introduction_to_openstack/mark-ya.png">
+					</section>
 				</section>
 				<section>
 					<section>
@@ -265,7 +269,7 @@
 						<h2>Enjoy it!</h2>
 					</section>
 					<section>
-						<h2>試試水溫...</h2><!--Enjoy it-->	
+						<h2>試試水溫...</h2>
 						<p><a href="http://docs.openstack.org/developer/devstack/">Devstack</a></p>
 					</section>
 					<section>
@@ -284,7 +288,6 @@
 
 				<!--重點是超多大咖都伙在開發團隊裡啊啊啊啊啊-->
 				<!--VMware已经贡献出VCDrivers 去帮助OpenStack去管理vSphere集群-->
-				<!--方便佈署，易於伸縮-->
 				<!--Iaas, PaaS, ...? -->
 				<!--Why Openstack in our company-->
 			</div>
