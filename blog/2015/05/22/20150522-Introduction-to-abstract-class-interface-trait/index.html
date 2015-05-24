@@ -3,17 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Become an underline.</title>
+  <title>抽象類，介面，特徵樣板 | Become an underline.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Here is PuHsiu&apos;s blog, Technology, Skill and everything I love.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Become an underline.">
-<meta property="og:url" content="http://puhsiu.github.io/blog/index.html">
+  <meta name="description" content="前幾天在 PHP 也有 Days #15的會後補充 聽到了一個關於 Abstract Class 和 Interface 的比喻，感覺還滿新奇的，所以搶在系列文開始之前分享一下 XD。
+這個比喻是這樣的：
+
+有三種動物，飛鳥，企鵝，蝙蝠“鳥類” 是 Abstract Class“飛行” 是 Interface 裡描述的行為於是飛鳥繼承了鳥類這個抽象類，並實作了 飛行 這個 Interface蝙蝠雖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="抽象類，介面，特徵樣板">
+<meta property="og:url" content="http://puhsiu.github.io/blog/2015/05/22/20150522-Introduction-to-abstract-class-interface-trait/index.html">
 <meta property="og:site_name" content="Become an underline.">
-<meta property="og:description" content="Here is PuHsiu&apos;s blog, Technology, Skill and everything I love.">
+<meta property="og:description" content="前幾天在 PHP 也有 Days #15的會後補充 聽到了一個關於 Abstract Class 和 Interface 的比喻，感覺還滿新奇的，所以搶在系列文開始之前分享一下 XD。
+這個比喻是這樣的：
+
+有三種動物，飛鳥，企鵝，蝙蝠“鳥類” 是 Abstract Class“飛行” 是 Interface 裡描述的行為於是飛鳥繼承了鳥類這個抽象類，並實作了 飛行 這個 Interface蝙蝠雖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Become an underline.">
-<meta name="twitter:description" content="Here is PuHsiu&apos;s blog, Technology, Skill and everything I love.">
+<meta name="twitter:title" content="抽象類，介面，特徵樣板">
+<meta name="twitter:description" content="前幾天在 PHP 也有 Days #15的會後補充 聽到了一個關於 Abstract Class 和 Interface 的比喻，感覺還滿新奇的，所以搶在系列文開始之前分享一下 XD。
+這個比喻是這樣的：
+
+有三種動物，飛鳥，企鵝，蝙蝠“鳥類” 是 Abstract Class“飛行” 是 Interface 裡描述的行為於是飛鳥繼承了鳥類這個抽象類，並實作了 飛行 這個 Interface蝙蝠雖">
   
     <link rel="alternative" href="/blog/atom.xml" title="Become an underline." type="application/atom+xml">
   
@@ -63,9 +72,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-20150522-Introduction-to-abstract-class-interface-trait" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-20150522-Introduction-to-abstract-class-interface-trait" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2015/05/22/20150522-Introduction-to-abstract-class-interface-trait/" class="article-date">
   <time datetime="2015-05-21T16:58:58.000Z" itemprop="datePublished">2015-05-22</time>
@@ -78,8 +85,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2015/05/22/20150522-Introduction-to-abstract-class-interface-trait/">抽象類，介面，特徵樣板</a>
+    <h1 class="article-title" itemprop="name">
+      抽象類，介面，特徵樣板
     </h1>
   
 
@@ -128,56 +135,20 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-20150513-start-to-blogging" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2015/05/13/20150513-start-to-blogging/" class="article-date">
-  <time datetime="2015-05-13T00:36:58.000Z" itemprop="datePublished">2015-05-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2015/05/13/20150513-start-to-blogging/">從今天開始寫網誌</a>
-    </h1>
+    <a href="/blog/2015/05/13/20150513-start-to-blogging/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">從今天開始寫網誌</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>回想年初的時候，曾經為自己設下了幾個目標。</p>
-<p>其中之一是這樣的：有鑑於至今都只是把學到的東西隨便記下，一直缺乏有系統的管理，尤其聽了<a href="https://www.facebook.com/jimycao" target="_blank" rel="external">曹祖聖老師</a>的在<a href="http://www.microsoft.com/taiwan/newsletter/library/edm2014/2015MVP-openday/MS_MVP_edm_web.html" target="_blank" rel="external">2015 微軟實戰課程日</a>的演講<a href="https://www.youtube.com/watch?v=LlsKa4_yI48" target="_blank" rel="external">微軟技術無所不通-教你成為 IT 界的德魯伊</a>後，深覺自己的知識過於零散，因此決定開始這個技術網誌。</p>
-<p>目前計劃以 <a href="http://www.tenlong.com.tw/items/9863473316?item_id=999219" target="_blank" rel="external">松本行弘談程式世界的未來</a> 這本書為主軸， <strong>閒扯</strong> 一些平日 Coding 上想法或類似的概念……之類的 XD。</p>
-<hr>
-<p>仔細想想上一次寫網誌已經是高中時候的事了，那時<a href="http://zh.wikipedia.org/wiki/無名小站" target="_blank" rel="external">無名小站</a>正紅，也就是所謂的 <a href="http://zh.wikipedia.org/wiki/Web_2.0" target="_blank" rel="external">Web 2.0</a> 時代 XD。不過當時分享的內容主要以日常生活相關，還有一些碎碎念之類的，這次要從自己的專業出發，一邊統整知識，一邊發揮宅分享的精神 XD。</p>
-<hr>
-<p>最後的一點小抱負是，希望這個網誌可以持續下去 XD，讓自己的年度生活<del>烤雞</del>考蹟可以漂亮一點。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://puhsiu.github.io/blog/2015/05/13/20150513-start-to-blogging/" data-id="ci9yg4xp00000qlw7kyiefyf8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/life/">life</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-  
-  
 </section>
         
           <aside id="sidebar">
