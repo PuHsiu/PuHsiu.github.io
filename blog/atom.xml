@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[Become an underline.]]></title>
-  <subtitle><![CDATA[想要知道更多]]></subtitle>
+  <subtitle><![CDATA[練文筆，從發廢文開始！]]></subtitle>
   <link href="/blog/atom.xml" rel="self"/>
   <link href="http://puhsiu.github.io/blog/"/>
-  <updated>2015-05-24T15:37:07.000Z</updated>
+  <updated>2015-05-31T14:06:13.000Z</updated>
   <id>http://puhsiu.github.io/blog/</id>
   
   <author>
@@ -13,6 +13,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Domain Specific Language (DSL)]]></title>
+    <link href="http://puhsiu.github.io/blog/2015/05/31/20150531-What-is-Domain-Specific-Language/"/>
+    <id>http://puhsiu.github.io/blog/2015/05/31/20150531-What-is-Domain-Specific-Language/</id>
+    <published>2015-05-31T13:15:16.000Z</published>
+    <updated>2015-05-31T14:06:13.000Z</updated>
+    <content type="html"><![CDATA[<p>終於開始看 <a href="http://www.tenlong.com.tw/items/9863473316?item_id=999219" target="_blank" rel="external">松本行弘談程式世界的未來了</a> 第一章談得是電腦硬體相關的，沒啥意思，所以就直接略過了。</p>
+<p>第二章開始談程式相關的東西。其中有一個很新鮮的名詞 - <a href="http://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="external">DSL</a>，也就是 Domain Specific Language。如同這個詞所描述的，能夠定義為 DSL 的語言都是為了特定目的而產生的。比如說 SQL 是為了資料庫查找而定義的語言，awk、sed 是為了字串處理，甚至 Makefile、JSON 都算是一種 DSL。(嗯，會用「甚至」來形容的原因其實是我一直把 Makefile 當成成一種可以嵌程式進去的設定檔 =口=||)</p>
+<p>好，回歸主題，松本先生以 <a href="#" title="General Perpose Language 也就是不為特定目的而生的語言">GPL</a> 為中心，把 DSL 分成了兩大類，外部和內部，外部 DSL </p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>終於開始看 <a href="http://www.tenlong.com.tw/items/9863473316?item_id=999219" target="_blank" rel="external">松本行弘談程式世界的未來了</a> 第一章談得是電腦硬體相關的，]]>
+    </summary>
+    
+      <category term="PL" scheme="http://puhsiu.github.io/blog/tags/PL/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[抽象類，介面，特徵樣板]]></title>
